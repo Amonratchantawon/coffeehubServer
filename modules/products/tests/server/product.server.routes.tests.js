@@ -51,7 +51,21 @@ describe('Product CRUD tests', function () {
     // Save a user to the test db and create new Product
     user.save(function () {
       product = {
-        name: 'Product name'
+        name: 'Product name',
+        image: [
+          'http://gabrielserafini.com/wp-content/uploads/IMG_3139-1000x1000.jpg',
+          'http://www.felipejimenez.com/wp-content/uploads/2016/10/coffee-1000x1000.jpg',
+          'https://s3-media2.fl.yelpcdn.com/bphoto/toTnh6conv5GTRU4khBoPg/348s.jpg'
+        ],
+        descriptions: 'The origin and history of coffee dates back to the 10th century, and possibly earlier with a number of reports and legends surrounding its first use. The native (undomesticated) origin of coffee is thought to have been Ethiopia. The earliest substantiated evidence of either coffee drinking or knowledge of the coffee tree is from the 15th century, in the Sufi monasteries of Yemen.',
+        price: {
+          type: [{
+            price: 100,
+            size: 'S',
+            discount: 30,
+            netprice: 70
+          }]
+        }
       };
 
       done();
