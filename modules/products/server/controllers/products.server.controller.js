@@ -81,7 +81,7 @@ exports.delete = function(req, res) {
  * List of Products
  */
 exports.list = function(req, res) {
-  Product.find().sort('-created').populate('user', 'displayName').exec(function(err, products) {
+  Product.find({}, 'name image description price _id').sort('-created').populate('user', 'displayName').exec(function(err, products) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -91,6 +91,18 @@ exports.list = function(req, res) {
     }
   });
 };
+
+// exports.search = function (req, res) {
+//   Product.find().sort('-created').populate('user', 'displayName').exec(function(err, products) {
+//     if (err) {
+//       return res.status(400).send({
+//         message: errorHandler.getErrorMessage(err)
+//       });
+//     } else {
+//       res.jsonp(products);
+//     }
+//   });
+// };
 
 /**
  * Product middleware
