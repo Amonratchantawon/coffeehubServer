@@ -27,7 +27,7 @@ var ProductSchema = new Schema({
       price: {
         type: Number
       },
-      size: {
+      type: {
         type: String
       },
       discount: {
@@ -47,7 +47,7 @@ var ProductSchema = new Schema({
     ref: 'Shop'
   },
   favorite: {
-    type:[{
+    type: [{
       type: Schema.ObjectId,
       ref: 'Favorite'
     }]

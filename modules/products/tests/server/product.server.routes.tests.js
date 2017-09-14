@@ -57,17 +57,16 @@ describe('Product CRUD tests', function () {
           'http://www.felipejimenez.com/wp-content/uploads/2016/10/coffee-1000x1000.jpg',
           'https://s3-media2.fl.yelpcdn.com/bphoto/toTnh6conv5GTRU4khBoPg/348s.jpg'
         ],
-        descriptions: 'The origin and history of coffee dates back to the 10th century, and possibly earlier with a number of reports and legends surrounding its first use. The native (undomesticated) origin of coffee is thought to have been Ethiopia. The earliest substantiated evidence of either coffee drinking or knowledge of the coffee tree is from the 15th century, in the Sufi monasteries of Yemen.',
-        price: {
-          type: [{
-            price: 100,
-            size: 'S',
-            discount: 30,
-            netprice: 70
-          }]
-        }
-      };
+        description: 'The origin and history of coffee dates back to the 10th century, and possibly earlier with a number of reports and legends surrounding its first use. The native (undomesticated) origin of coffee is thought to have been Ethiopia. The earliest substantiated evidence of either coffee drinking or knowledge of the coffee tree is from the 15th century, in the Sufi monasteries of Yemen.',
+        price:
+        [{
+          price: 100,
+          type: 'S',
+          discount: 30,
+          netprice: 70
+        }]
 
+      };
       done();
     });
   });
@@ -108,8 +107,15 @@ describe('Product CRUD tests', function () {
 
                 // Set assertions
                 (products[0].user._id).should.equal(userId);
-                (products[0].name).should.match('Product name');
-
+                (products[0].name).should.match(product.name);
+                (products[0].image).should.match(product.image);
+                products[0].image.length.should.match(3);
+                (products[0].price[0].price).should.match(product.price[0].price);
+                (products[0].price[0].type).should.match(product.price[0].type);
+                (products[0].price[0].discount).should.match(product.price[0].discount);
+                (products[0].price[0].netprice).should.match(product.price[0].netprice);
+                (products[0].description).should.match(product.description);
+                
                 // Call the assertion callback
                 done();
               });
