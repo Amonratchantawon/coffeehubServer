@@ -94,17 +94,7 @@ exports.list = function (req, res) {
     });
 };
 
-// exports.search = function (req, res) {
-//   Product.find().sort('-created').populate('user', 'displayName').exec(function(err, products) {
-//     if (err) {
-//       return res.status(400).send({
-//         message: errorHandler.getErrorMessage(err)
-//       });
-//     } else {
-//       res.jsonp(products);
-//     }
-//   });
-// };
+
 
 /**
  * Product middleware
@@ -130,7 +120,7 @@ exports.productByID = function (req, res, next, id) {
   });
 };
 
-
+// ////////////////////////////////////////////////////////////////////////
 exports.productBycateID = function (req, res, next, id) {
   req.id = id;
   next();
@@ -138,7 +128,7 @@ exports.productBycateID = function (req, res, next, id) {
 
 exports.filterproductBycateID = function (req, res) {
   var data = req.id;
-  Product.find({ category: data }).populate('user', 'displayName').exec(function (err, product) {
+  Product.find({ category: data }).sort('-created').populate('user', 'displayName').exec(function (err, product) {
     if (err) {
       return (err);
     } else if (!product) {
@@ -146,8 +136,9 @@ exports.filterproductBycateID = function (req, res) {
         message: 'No Product with that identifier has been found'
       });
     }
+    product.sort();
     res.jsonp(product);
   });
 };
 
-
+//////////////////////////////////////////////////////
