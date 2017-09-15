@@ -38,9 +38,13 @@ var ProductSchema = new Schema({
       }
     }]
   },
+  
   category: {
     type: Schema.ObjectId,
     ref: 'Category'
+  },
+  subcate: {
+    type: String
   },
   shop_id: {
     type: Schema.ObjectId,

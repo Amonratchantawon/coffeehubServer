@@ -12,11 +12,11 @@ var path = require('path'),
 /**
  * Create a Category
  */
-exports.create = function(req, res) {
+exports.create = function (req, res) {
   var category = new Category(req.body);
   category.user = req.user;
 
-  category.save(function(err) {
+  category.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -30,7 +30,7 @@ exports.create = function(req, res) {
 /**
  * Show the current Category
  */
-exports.read = function(req, res) {
+exports.read = function (req, res) {
   // convert mongoose document to JSON
   var category = req.category ? req.category.toJSON() : {};
 
@@ -44,12 +44,12 @@ exports.read = function(req, res) {
 /**
  * Update a Category
  */
-exports.update = function(req, res) {
+exports.update = function (req, res) {
   var category = req.category;
 
   category = _.extend(category, req.body);
 
-  category.save(function(err) {
+  category.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -63,10 +63,10 @@ exports.update = function(req, res) {
 /**
  * Delete an Category
  */
-exports.delete = function(req, res) {
+exports.delete = function (req, res) {
   var category = req.category;
 
-  category.remove(function(err) {
+  category.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -80,8 +80,8 @@ exports.delete = function(req, res) {
 /**
  * List of Categories
  */
-exports.list = function(req, res) {
-  Category.find().sort('-created').populate('user', 'displayName').exec(function(err, categories) {
+exports.list = function (req, res) {
+  Category.find().sort('-created').populate('user', 'displayName').exec(function (err, categories) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -95,7 +95,7 @@ exports.list = function(req, res) {
 /**
  * Category middleware
  */
-exports.categoryByID = function(req, res, next, id) {
+exports.categoryByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({

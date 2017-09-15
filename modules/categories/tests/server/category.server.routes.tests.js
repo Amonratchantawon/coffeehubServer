@@ -15,7 +15,9 @@ var app,
   agent,
   credentials,
   user,
-  category;
+  category,
+  category1,
+  category2;
 
 /**
  * Category routes tests
@@ -50,9 +52,14 @@ describe('Category CRUD tests', function () {
 
     // Save a user to the test db and create new Category
     user.save(function () {
-      category = {
-        name: 'Category name'
-      };
+      category = new Category({
+        name: 'drink',
+        subcate: [{
+          subname: 'coffee'
+        }],
+        image: ['pic1','pic2'],
+        description: 'drink category',
+      });
 
       done();
     });
@@ -91,10 +98,23 @@ describe('Category CRUD tests', function () {
 
                 // Get Categories list
                 var categories = categoriesGetRes.body;
+                // console.log("parent :  " + category1.name);
+                // console.log("categoryID : " + category._id);
+                // console.log("categoryID : " + category1._id);
+                // console.log("categoryID : " + category2._id);
+                console.log("categoryID : " + JSON.stringify(category));
+                // console.log("categoryID : " + JSON.stringify(category1));
+                // console.log("categoryID : " + JSON.stringify(category2));
 
                 // Set assertions
                 (categories[0].user._id).should.equal(userId);
-                (categories[0].name).should.match('Category name');
+                (categories[0].name).should.match(category.name);
+                (categories[0].subcate[0].subname).should.match(category.subcate[0].subname);
+                (categories[0].image[0]).should.match(category.image[0]);
+                (categories[0].image[1]).should.match(category.image[1]);
+                
+                categories[0].image.length.should.match(2);
+                (categories[0].description).should.match(category.description);
 
                 // Call the assertion callback
                 done();

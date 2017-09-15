@@ -16,27 +16,43 @@ var ShopSchema = new Schema({
     required: 'Please fill Shop name',
     trim: true
   },
-  address:{
-    type:{
-      address:{
-        type:String
+  address: {
+    type: {
+      address: {
+        type: String
       },
-      subdistrict:{
-        type:String
+      subdistrict: {
+        type: String
       },
-      district:{
-        type:String
+      district: {
+        type: String
       },
-      province:{
-        type:String
+      province: {
+        type: String
       },
-      postcode:{
-        type:String
+      postcode: {
+        type: String
       }
     }
   },
-  shopcode:{
-    type:String
+  shopcode: {
+    type: String
+  },
+  email: {
+    type: String
+  },
+  phone: {
+    type: String
+  },
+  location: {
+    type: {
+      lat: {
+        type: String
+      },
+      lng: {
+        type: String
+      }
+    }
   },
 
   created: {

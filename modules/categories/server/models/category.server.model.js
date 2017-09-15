@@ -16,18 +16,19 @@ var CategorySchema = new Schema({
     required: 'Please fill Category name',
     trim: true
   },
-  parent: {
-    type: String
+  subcate: {
+    type: [{
+      subname: {
+        type: String
+      }
+    }]
   },
+
   image: {
     type: [String]
   },
   description: {
     type: String
-  },
-  shop_id: {
-    type: Schema.ObjectId,
-    ref: 'Shop'
   },
 
   created: {

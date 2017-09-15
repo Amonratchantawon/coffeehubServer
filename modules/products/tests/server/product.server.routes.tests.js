@@ -83,7 +83,7 @@ describe('Product CRUD tests', function () {
 
         // Get the userId
         var userId = user.id;
-        console.log('User_ID'+userId);
+        // console.log('User_ID'+userId);
 
         // Save a new Product
         agent.post('/api/products')
@@ -113,6 +113,10 @@ describe('Product CRUD tests', function () {
                 products[0].should.have.property('price');
                 products[0].should.have.property('description');
                 products[0].should.have.property('_id');
+
+                products[0].should.not.have.property('category');
+                products[0].should.not.have.property('shop_id');
+                products[0].should.not.have.property('favorite');
 
                 // (products[0].user._id).should.equal(userId);
                 // (products[0].name).should.match(product.name);
