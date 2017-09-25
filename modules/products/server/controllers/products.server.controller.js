@@ -142,3 +142,24 @@ exports.filterproductBycateID = function (req, res) {
 };
 
 //////////////////////////////////////////////////////
+
+
+exports.productByshopID = function (req, res, next, id) {
+  req.id = id;
+  next();
+};
+
+exports.filterproductByshopID = function (req, res) {
+  var data = req.id;
+  Product.find({ shop_id: data }).populate('user', 'displayName').exec(function (err, product) {
+    if (err) {
+      return (err);
+    } else if (!product) {
+      return res.status(404).send({
+        message: 'No Product with that identifier has been found'
+      });
+    }
+    product.sort();
+    res.jsonp(product);
+  });
+};

@@ -15,6 +15,9 @@ module.exports = function(app) {
   app.route('/api/products/cate/:cateId')//.all(productsPolicy.isAllowed)
   .get(products.filterproductBycateID);
 
+  app.route('/api/products/shop/:shopId')//.all(productsPolicy.isAllowed)
+  .get(products.filterproductByshopID);
+
   app.route('/api/products/:productId').all(productsPolicy.isAllowed)
     .get(products.read)
     .put(products.update)
@@ -23,4 +26,5 @@ module.exports = function(app) {
   // Finish by binding the Product middleware
   app.param('productId', products.productByID);
   app.param('cateId', products.productBycateID);
+  app.param('shopId',products.productByshopID);
 };
