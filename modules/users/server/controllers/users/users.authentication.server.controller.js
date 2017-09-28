@@ -7,6 +7,7 @@ var path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
   passport = require('passport'),
+  Shop = mongoose.model('Shop'),
   User = mongoose.model('User');
 
 // URLs for which user can't be redirected on signin
@@ -45,6 +46,7 @@ exports.signup = function (req, res) {
         if (err) {
           res.status(400).send(err);
         } else {
+          user.populate(shop);
           res.json(user);
         }
       });
