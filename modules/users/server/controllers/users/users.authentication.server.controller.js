@@ -56,6 +56,8 @@ exports.signup = function (req, res) {
                 });
                 var userpopshop = user ? user.toJSON() : {};
                 userpopshop.shop = shops;
+                console.log(shops);
+                console.log('user : ' + userpopshop);
                 res.json(userpopshop);
               }
             });
