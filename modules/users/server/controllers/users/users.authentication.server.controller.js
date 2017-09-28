@@ -56,8 +56,6 @@ exports.signup = function (req, res) {
                 });
                 var userpopshop = user ? user.toJSON() : {};
                 userpopshop.shop = shops;
-                console.log(shops);
-                console.log('user : ' + userpopshop);
                 res.json(userpopshop);
               }
             });
@@ -87,7 +85,13 @@ exports.signin = function (req, res, next) {
         if (err) {
           res.status(400).send(err);
         } else {
-          res.json(user);
+          if (user && user.shop && user.shop !== undefined) {
+            Shop.populate(user, { path: 'shop' }, function (err, userpopshop) {
+              res.json(userpopshop);
+            });
+          } else {
+            res.json(user);
+          }
         }
       });
     }
