@@ -5,11 +5,11 @@
     .module('favorites')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  menuConfig.$inject = ['Menus'];
 
-  function menuConfig(menuService) {
+  function menuConfig(Menus) {
     // Set top bar menu items
-    menuService.addMenuItem('topbar', {
+    Menus.addMenuItem('topbar', {
       title: 'Favorites',
       state: 'favorites',
       type: 'dropdown',
@@ -17,13 +17,13 @@
     });
 
     // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'favorites', {
+    Menus.addSubMenuItem('topbar', 'favorites', {
       title: 'List Favorites',
       state: 'favorites.list'
     });
 
     // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'favorites', {
+    Menus.addSubMenuItem('topbar', 'favorites', {
       title: 'Create Favorite',
       state: 'favorites.create',
       roles: ['user']
