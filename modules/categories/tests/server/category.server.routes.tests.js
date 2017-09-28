@@ -98,13 +98,8 @@ describe('Category CRUD tests', function () {
 
                 // Get Categories list
                 var categories = categoriesGetRes.body;
-                // console.log("parent :  " + category1.name);
-                // console.log("categoryID : " + category._id);
-                // console.log("categoryID : " + category1._id);
-                // console.log("categoryID : " + category2._id);
                 console.log("categoryID : " + JSON.stringify(category));
-                // console.log("categoryID : " + JSON.stringify(category1));
-                // console.log("categoryID : " + JSON.stringify(category2));
+          
 
                 // Set assertions
                 (categories[0].user._id).should.equal(userId);

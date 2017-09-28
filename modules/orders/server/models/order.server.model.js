@@ -10,12 +10,12 @@ var mongoose = require('mongoose'),
  * Order Schema
  */
 var OrderSchema = new Schema({
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Order name',
-    trim: true
-  },
+  // name: {
+  //   type: String,
+  //   default: '',
+  //   required: 'Please fill Order name',
+  //   trim: true
+  // },
   items: {
     type: [{
       product: {
