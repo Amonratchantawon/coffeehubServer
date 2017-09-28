@@ -28,27 +28,27 @@ var PromotionSchema = new Schema({
 
   discountType:{
     type: String,
-    required: 'Please fill Promotion code'
+    required: 'Please fill Promotion discountType'
   },
 
   discountValue:{
     type: Number,
-    required: 'Please fill Promotion code'
+    required: 'Please fill Promotion discountValue'
   },
 
   startdate:{
     type: Date,
-    required: 'Please fill Promotion code'
+    required: 'Please fill Promotion startdate'
   },
 
   enddate:{
     type: Date,
-    required: 'Please fill Promotion code'
+    required: 'Please fill Promotion enddate'
   },
 
   status:{
     type: String,
-    required: 'Please fill Promotion code'
+    required: 'Please fill Promotion status'
   },
   
   shop: {

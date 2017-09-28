@@ -8,14 +8,14 @@ var productsPolicy = require('../policies/products.server.policy'),
 
 module.exports = function(app) {
   // Products Routes
-  app.route('/api/products')//.all(productsPolicy.isAllowed)
+  app.route('/api/products').all(productsPolicy.isAllowed)
     .get(products.list)
     .post(products.create);
 
-  app.route('/api/products/cate/:cateId')//.all(productsPolicy.isAllowed)
+  app.route('/api/products/cate/:cateId').all(productsPolicy.isAllowed)
   .get(products.filterproductBycateID);
 
-  app.route('/api/products/shop/:shopId')//.all(productsPolicy.isAllowed)
+  app.route('/api/products/shop/:shopId').all(productsPolicy.isAllowed)
   .get(products.filterproductByshopID);
 
   app.route('/api/products/:productId').all(productsPolicy.isAllowed)

@@ -31,6 +31,13 @@ describe('Promotion Model Unit Tests:', function() {
     user.save(function() {
       promotion = new Promotion({
         name: 'Promotion Name',
+        code:'10346452555',
+        description:'sssssssssssssssssssssssssss',
+        discountType:'ice',
+        discountValue: 25,
+        startdate:'10-02-2537',
+        enddate:'11-02-2537',
+        status:'sucess',
         user: user
       });
 

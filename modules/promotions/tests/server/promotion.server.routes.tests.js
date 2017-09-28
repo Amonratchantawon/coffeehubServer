@@ -51,7 +51,14 @@ describe('Promotion CRUD tests', function () {
     // Save a user to the test db and create new Promotion
     user.save(function () {
       promotion = {
-        name: 'Promotion name'
+        name: 'Promotion name',
+        code:'10346452555',
+        description:'sssssssssssssssssssssssssss',
+        discountType:'ice',
+        discountValue: 25,
+        startdate:'10-02-2537',
+        enddate:'11-02-2537',
+        status:'sucess',
       };
 
       done();
