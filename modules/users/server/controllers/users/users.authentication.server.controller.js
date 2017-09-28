@@ -47,8 +47,17 @@ exports.signup = function (req, res) {
           res.status(400).send(err);
         } else {
           if (user && user.shop && user.shop !== undefined) {
-            Shop.populate(user, { path: 'shop' }, function (err, usershop) {
-              res.json(usershop);
+            Shop.find({ _id: { $in: user.shop } }).sort('-created').exec(function (err, shops) {
+              if (err) {
+                return (err);
+              } else if (!shops) {
+                return res.status(404).send({
+                  message: 'No shops with that identifier has been found'
+                });
+                var userpopshop = user ? user.toJSON() : {};
+                userpopshop.shop = shops;
+                res.json(userpopshop);
+              }
             });
           } else {
             res.json(user);
