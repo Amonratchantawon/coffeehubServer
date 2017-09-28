@@ -46,8 +46,14 @@ exports.signup = function (req, res) {
         if (err) {
           res.status(400).send(err);
         } else {
-          user.populate(shop);
-          res.json(user);
+          if (user && user.shop && user.shop !== undefined) {
+            Shop.populate(user, { path: 'shop' }, function (err, usershop) {
+              res.json(usershop);
+            });
+          } else {
+            res.json(user);
+          }
+
         }
       });
     }
